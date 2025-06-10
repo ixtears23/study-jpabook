@@ -1,0 +1,11 @@
+services:
+  h2db:
+    image: oscarfonts/h2:2.2.224
+    container_name: h2db
+    ports:
+      - "1521:1521"       # TCP (JDBC)
+      - "81:81"           # 웹 콘솔
+    environment:
+      H2_OPTIONS: "-tcp -tcpAllowOthers -web -ifNotExists"
+    volumes:
+      - ./h2-data:/opt/h2-data  # 로컬 볼륨에 데이터 파일 보존
